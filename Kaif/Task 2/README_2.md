@@ -120,18 +120,12 @@ mean more accurate predictions.
   the basis for precision, recall, and F1.
 
 ### Curve Details
-**ROC Curve:** plots True Positive Rate against False Positive Rate across thresholds; the
-diagonal line represents random guessing (AUC = 0.5). Both the training and testing curves
-bowed towards the top-left corner, away from the diagonal, indicating the model separates
-the two classes well above chance, with train and test curves overlapping closely.
+**ROC Curve:** AUC stayed at 0.78 for both train and test, showing class_weight='balanced' didn't change the model's underlying ability to separate the classes — it only shifted where the decision threshold falls.
 
 ### Key Observations
-- Performance stayed nearly flat across C values from 0.1 to 100, meaning regularization
-  strength had little effect — the informative features were separable enough that the
-  model wasn't overfitting even with weak regularization.
-- The strongest regularization (C = 0.01) gave marginally the best accuracy, suggesting a
-  very simple decision boundary already captures the signal well.
-- Train and test performance were close to each other, indicating good generalization with
-  no significant overfitting.
-- The confusion matrices showed a fairly balanced number of false positives and false
-  negatives across both classes, consistent with a balanced class distribution.
+- Data was imbalanced earlier:
+- Accuracy alone is misleading on this dataset due to ~90/10 class imbalance.
+- Precision > Recall shows the model is conservative in predicting the minority (positive) class.
+- F1-score is a much better indicator of real performance here than accuracy.
+- To get better results i use class_weight='balanced' automatically reweights the loss so that misclassifying a     minority-class sample costs more than misclassifying a majority-class one.
+- False negatives dropped sharply (3452→ fewer relatively, 936 on test) while false positives rose a lot, confirming the model now catches far more actual positives at the cost of more false alarms.

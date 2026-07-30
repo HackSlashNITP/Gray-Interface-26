@@ -151,6 +151,7 @@ A word cloud for genre descriptions.
 
 
 
-Notebook
+Notebook link:
 
-The full notebook with all code and outputs is in Task_1_Gray_interface.ipynb in this repo.
+https://colab.research.google.com/drive/1tIRLq_knZduEyjZCbdGNOmbitpKkeO9g?usp=sharing
+

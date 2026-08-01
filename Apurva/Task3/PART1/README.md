@@ -45,3 +45,4 @@ To evaluate the models thoroughly, I generated performance plots for **Accuracy 
    Since the dataset consists of continuous chemical properties (such as pH, alcohol, and acidity), standardizing the features ensures that each variable contributes equally to the geometric distance calculation. The Euclidean metric effectively captures straight-line similarity in this standardized continuous space.
 3. **Why Distance-Based Weights?** 
    Using `weights='distance'` ensured that closer neighbors had a stronger voice than neighbors located further away. This significantly reduced misclassifications near overlapping class boundaries, yielding a cleaner and more accurate final decision boundary.
+   

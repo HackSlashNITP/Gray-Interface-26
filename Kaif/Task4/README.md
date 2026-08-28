@@ -3,7 +3,7 @@
 Classifies astronomical objects photometric and spectral features into **Galaxy**, **QSO (Quasar)**, or **Star**.
 
 ## Notebook
-[Google Colab Notebook](https://colab.research.google.com/drive/1e0JApMSM92ssQMKtPWILbXTAQ8FbWFZh?usp=sharing)
+[Google Colab Notebook](https://colab.research.google.com/drive/1Cn0UhOKylgEVbsXtwyM9_z84nmG0V8Op?usp=sharing)
 
 ## EDA & Preprocessing
 - Checked class distribution, missing values, and duplicates.
@@ -36,8 +36,8 @@ Applied SHAP to the best-performing tree-based model (XGBoost):
 
 ## Kaggle Submission
 - Generated predictions on `test.csv` using the final model and submitted to Kaggle.
-- Cross-Validation Accuracy: 0.9634 (± 0.0004)
-- Kaggle Public Leaderboard Score: <0.95288>
+- Cross-Validation Accuracy: 0.9637 (± 0.0003)
+- Kaggle Public Leaderboard Score: <0.95296>
 
 ## Web Application
 - **Backend:** FastAPI, serves the saved pipeline (`joblib`) via a `/predict` endpoint.

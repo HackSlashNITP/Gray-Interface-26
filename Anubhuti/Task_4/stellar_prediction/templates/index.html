@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Stellar Object Classifier</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 500px;
+      margin: 60px auto;
+      background: #0f172a;
+      color: #f1f5f9;
+      padding: 20px;
+    }
+    h1 { font-size: 22px; margin-bottom: 4px; }
+    p.subtitle { color: #94a3b8; margin-top: 0; margin-bottom: 24px; }
+    form {
+      background: #1e293b;
+      padding: 20px;
+      border-radius: 10px;
+    }
+    label {
+      display: block;
+      margin-top: 12px;
+      margin-bottom: 4px;
+      font-size: 14px;
+      color: #cbd5e1;
+    }
+    input, select {
+      width: 100%;
+      padding: 8px;
+      border-radius: 6px;
+      border: 1px solid #334155;
+      background: #0f172a;
+      color: #f1f5f9;
+      box-sizing: border-box;
+      font-size: 14px;
+    }
+    button {
+      margin-top: 20px;
+      width: 100%;
+      padding: 10px;
+      background: #6366f1;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 15px;
+      cursor: pointer;
+    }
+    button:hover { background: #4f46e5; }
+    .result {
+      margin-top: 20px;
+      padding: 14px;
+      background: #14532d;
+      border-radius: 8px;
+      font-size: 18px;
+      text-align: center;
+    }
+    .error {
+      margin-top: 20px;
+      padding: 14px;
+      background: #7f1d1d;
+      border-radius: 8px;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <h1>🔭 Stellar Object Classifier</h1>
+  <p class="subtitle">Enter feature values to predict Galaxy / Star / QSO</p>
+  <form method="POST">
+    {% for feat in numeric_features %}
+      <label for="{{ feat }}">{{ feat }}</label>
+      <input type="number" step="any" name="{{ feat }}" id="{{ feat }}" required>
+    {% endfor %}
+    <label for="spectral_type">Spectral Type</label>
+    <select name="spectral_type" id="spectral_type">
+      {% for opt in spectral_options %}
+        <option value="{{ opt }}">{{ opt }}</option>
+      {% endfor %}
+    </select>
+    <label for="galaxy_population">Galaxy Population</label>
+    <select name="galaxy_population" id="galaxy_population">
+      {% for opt in galaxy_options %}
+        <option value="{{ opt }}">{{ opt }}</option>
+      {% endfor %}
+    </select>
+    <button type="submit">Predict</button>
+  </form>
+  {% if prediction %}
+    <div class="result">Predicted class: <strong>{{ prediction }}</strong></div>
+  {% endif %}
+  {% if error %}
+    <div class="error">{{ error }}</div>
+  {% endif %}
+</body>
+</html>
